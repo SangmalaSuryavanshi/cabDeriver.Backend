@@ -6,22 +6,20 @@ import com.cabderiver.Cab.Deriver.requestbody.UserCredentialRequestBody;
 import com.cabderiver.Cab.Deriver.service.CustomerService;
 import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/customer")
 public class CustomerController {
     @Autowired
     CustomerService customerService;
-    @PostMapping("/api/customer/register")
+    @PostMapping("/register")
     public String createAccount(@RequestBody Customer customer){
         customerService.registerAccount(customer);
         return "Account Created Successfully";
 
     }
-    @GetMapping("/api/customer/authenticate")
+    @GetMapping("/authenticate")
     public String loginCustomer(@RequestBody UserCredentialRequestBody userCredentialRequestBody){
         String email = userCredentialRequestBody.getEmail();
         String password = userCredentialRequestBody.getPassword();
