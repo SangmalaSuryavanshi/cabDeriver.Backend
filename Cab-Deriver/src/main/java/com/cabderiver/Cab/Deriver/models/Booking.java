@@ -20,6 +20,8 @@ public class Booking {
     String feedback;
     @ManyToOne
     Driver driver;
+    private String startingLocation;
+    private String endingLocation;
 
 
 }
